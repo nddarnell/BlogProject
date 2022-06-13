@@ -1,11 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlogProject.Models
 {
+    // child
     public class Blog
     {
         public int Id { get; set; }
+        //parent
         public string AuthorId { get; set; }
 
         [Required]
@@ -33,7 +36,8 @@ namespace BlogProject.Models
         [NotMapped]
         public IFormFile Image { get; set; }
 
-        //public virtual BlogUser Author { get; set; }
-        //public virtual ICollection<Post> Posts { get; set; } = new HashSet<Post>();
+        // Navigation property
+        public virtual IdentityUser Author { get; set; }
+        public virtual ICollection<Post> Posts { get; set; } = new HashSet<Post>();
     }
 }
