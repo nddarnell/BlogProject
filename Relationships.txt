@@ -5,3 +5,5 @@ IdentityUser - parent of Blog, Post, Comment, Tag
 Blog - parent of Post
 
 Post - parent of Comment and Tag
+
+CRUD - Create, Read, Update, Delete
