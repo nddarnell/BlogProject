@@ -49,7 +49,7 @@ namespace BlogProject.Controllers
         // GET: Posts/Create
         public IActionResult Create()
         {
-            ViewData["BlogId"] = new SelectList(_context.Blogs, "Id", "Description");
+            ViewData["BlogId"] = new SelectList(_context.Blogs, "Id", "Name");
             ViewData["BlogUserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
@@ -63,7 +63,7 @@ namespace BlogProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                post.Created = DateTime.Now;
+                post.Created = DateTime.UtcNow;
 
                 _context.Add(post);
                 await _context.SaveChangesAsync();
