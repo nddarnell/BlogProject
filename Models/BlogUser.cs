@@ -15,14 +15,14 @@ namespace BlogProject.Models
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} and no more than {1} characters long", MinimumLength = 2)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        public byte[] Image { get; set; }
-        public string ContentType { get; set; }
+        public byte[]? Image { get; set; }
+        public string? ContentType { get; set; }
 
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and no more than {1} characters long", MinimumLength = 2)]
-        public string FacebookUrl { get; set; }
+        public string? FacebookUrl { get; set; }
 
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and no more than {1} characters long", MinimumLength = 2)]
-        public string TwitterUrl { get; set; }
+        public string? TwitterUrl { get; set; }
 
 
         [NotMapped]

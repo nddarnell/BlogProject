@@ -1,5 +1,6 @@
 using BlogProject.Data;
 using BlogProject.Models;
+using BlogProject.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +21,14 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages();
 
+//Register my custom DataService Class
+builder.Services.AddScoped<DataService>();
+
 var app = builder.Build();
+
+var dataService = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataService>();
+await dataService.ManageDataAsync();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
