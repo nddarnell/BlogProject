@@ -1,6 +1,7 @@
 using BlogProject.Data;
 using BlogProject.Models;
 using BlogProject.Services;
+using BlogProject.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,11 @@ builder.Services.AddRazorPages();
 
 //Register my custom DataService Class
 builder.Services.AddScoped<DataService>();
+
+//register a preconfigured instance of gmail settings
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+builder.Services.AddScoped<IBlogEmailSender, EmailService>();
+
 
 var app = builder.Build();
 
