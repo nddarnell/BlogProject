@@ -32,6 +32,9 @@ builder.Services.AddScoped<IBlogEmailSender, EmailService>();
 //Register image service
 builder.Services.AddScoped<IImageService, BasicImageService>();
 
+//Register Slug service
+builder.Services.AddScoped<ISlugService, BasicSlugService>();
+
 
 var app = builder.Build();
 
