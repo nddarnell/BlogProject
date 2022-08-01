@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="BlogId" class="control-label"></label>
-                <select asp-for="BlogId" class ="form-control" asp-items="ViewBag.BlogId"></select>
+                <select asp-for="BlogId" class="form-control" asp-items="ViewBag.BlogId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -24,17 +24,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="Abstract" class="control-label"></label>
-                <textarea asp-for="Abstract" class="form-control" ></textarea>
+                <textarea asp-for="Abstract" class="form-control"></textarea>
                 <span asp-validation-for="Abstract" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>
-                <textarea asp-for="Content" class="form-control" ></textarea>
+                <textarea id="froala-editor" asp-for="Content" class="form-control"></textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ReadyStatus" class="control-label"></label>
-                <select asp-for="ReadyStatus" asp-items="@Html.GetEnumSelectList<ReadyStatus>()"class="form-control"></select>
+                <select asp-for="ReadyStatus" asp-items="@Html.GetEnumSelectList<ReadyStatus>()" class="form-control"></select>
                 <span asp-validation-for="ReadyStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -54,5 +54,32 @@
 </div>
 
 @section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/plugins/lists.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/plugins/image.min.js"></script>
+    <script>
+        new FroalaEditor('textarea#froala-editor', {
+            events: {
+                "image.beforeUpload": function (files) {
+                    var editor = this;
+                    if (files.length) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var result = e.target.result;
+                            editor.image.insert(result, null, null, editor.image.get());
+                        };
+
+                        reader.readAsDataURL(files[0]);
+                    }
+                    editor.popups.hideAll();
+                    return false;
+                }
+            }
+        })
+        FroalaEditor
+    </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@section Headers{
+    <link rel="stylesheet" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/plugins/image.min.css" />
 }

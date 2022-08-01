@@ -13,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
 
-
+    <link rel="stylesheet" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/plugins/image.min.css" />
+    @await RenderSectionAsync("Headers", required: false) 
     <link href="~/css/froala_editor.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="~/css/styles.css" rel="stylesheet" />
@@ -33,7 +34,7 @@
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" asp-controller="Home" asp-action="About">About</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
-                <partial name=" _LoginPartial"/>
+                <partial name="_LoginPartial"/>
             </div>
         </div>
     </nav>
@@ -100,5 +101,7 @@
     <!-- Core theme JS-->
     <script src="~/js/scripts.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
 </body>
 </html>
