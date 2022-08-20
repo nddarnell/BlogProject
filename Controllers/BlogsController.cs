@@ -117,7 +117,7 @@ namespace BlogProject.Controllers
                 {
                     var newBlog = await _context.Blogs.FindAsync(blog.Id);
                     newBlog.Updated = DateTime.Now;
-                    if(newBlog.Name !== blog.Name)
+                    if(newBlog.Name != blog.Name)
                     {
                         newBlog.Name = blog.Name;
                     }
