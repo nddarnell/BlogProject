@@ -54,10 +54,10 @@
 
                         <div class="row">
                             <div class="col d-grid gap-2">
-                                <buttom name="Add" type ="button" class="btn btn-dark btn-sm">Add</buttom>
+                                <buttom onclick="AddTag()" name="Add" type ="button" class="btn btn-dark btn-sm">Add</buttom>
                             </div>
                             <div class="col d-grid gap-2">
-                                <buttom name="Delete" type="button" class="btn btn-dark btn-sm">Delete</buttom>
+                                <buttom onclick="DeleteTag()" name="Delete" type="button" class="btn btn-dark btn-sm">Delete</buttom>
                             </div>
                         </div>
                     </div>
@@ -87,6 +87,7 @@
 </div>
 
 @section Scripts {
+    <script src="~/js/Custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/plugins/lists.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/plugins/image.min.js"></script>
     <script>
