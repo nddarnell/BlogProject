@@ -34,7 +34,14 @@ namespace BlogProject.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Posts/Details/5
+        //public async Task<IActionResult> TagIndex(string tag)
+        //{
+        //    var allPostIds = _context.Tags.Where(t => t.Text == tag).Select(t => t.PostId);
+        //    var posts = _context.Posts.Where(p => allPostIds.Contains(p.Id)).ToList();
+        //    return View("Index", posts);
+        //}
+
+        //GET: Posts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Posts == null)
@@ -54,6 +61,26 @@ namespace BlogProject.Controllers
 
             return View(post);
         }
+
+        //public async Task<IActionResult> Details(string slug)
+        //{
+        //    if (string.IsNullOrEmpty(slug))
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var post = await _context.Posts
+        //        .Include(p => p.Blog)
+        //        .Include(p => p.BlogUser)
+        //        .Include(p => p.Tags)
+        //        .FirstOrDefaultAsync(m => m.Slug == slug);
+        //    if (post == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(post);
+        //}
 
         // GET: Posts/Create
         public IActionResult Create()
@@ -97,8 +124,9 @@ namespace BlogProject.Controllers
 
 
                 _context.Add(post);
+                await _context.SaveChangesAsync();
 
-                foreach(var tagText in tagValues)
+                foreach (var tagText in tagValues)
                 {
                     _context.Add(new Tag()
                     {

@@ -34,7 +34,7 @@
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" asp-controller="Home" asp-action="About">About</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
-                <partial name="_LoginPartial"/>
+                <partial name="_LoginPartial" />
             </div>
         </div>
     </nav>
@@ -53,10 +53,10 @@
     </header>
 
     <!-- Main Content-->
-   
+
     @RenderBody()
-    
-    
+
+
 
     <!-- Footer-->
     <footer class="border-top">
@@ -99,6 +99,7 @@
 
     <script src="~/js/froala_editor.min.js"></script>
     <!-- Core theme JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="~/js/scripts.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
