@@ -27,3 +27,16 @@ function DeleteTag() {
 $("form").on("submit", function () {
     $("#TagList option").prop("selected", "selected");
 })
+
+if (tagValues != '') {
+    let tagArray = tagValues.split(",");
+    for (let loop = 0; loop < tagArray.length; loop++) {
+        ReplaceTag(tagArray[loop], loop);
+        index++;
+    }
+}
+
+function ReplaceTag(tag, index) {
+    let newOption = new Option(tag, tag);
+    document.getElementById("TagList").options[index] = newOption;
+}
